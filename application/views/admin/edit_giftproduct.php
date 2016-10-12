@@ -1,0 +1,142 @@
+<?php include "templates/header.php" ?>
+        <!--/span-->
+        <!-- left menu ends -->
+<div class="ch-container">
+    <div class="row footer_content"> 
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+            <div>
+    <ul class="breadcrumb">
+        <li>
+            <a href="#">Home</a>
+        </li>
+        <li>
+            <a href="#">Edit Gift Product</a>
+        </li>
+    </ul>
+</div>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well" data-original-title="">
+                <h2><i class="glyphicon glyphicon-edit"></i> Edit Gift Product</h2>
+
+                <div class="box-icon">
+                    <a href="#" class="btn btn-setting btn-round btn-default"><i
+                            class="glyphicon glyphicon-cog"></i></a>
+                    <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                            class="glyphicon glyphicon-chevron-up"></i></a>
+                    <a href="#" class="btn btn-close btn-round btn-default"><i
+                            class="glyphicon glyphicon-remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Title Name<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="title_name" placeholder="Enter title Name">
+                    </div>  
+                    <div class="form-group">
+                        <label for="exampleInputFile">Category Image<span class="fill_symbol"> *</span></label>
+                        <input type="file" id="category_image">
+                        <div class="edit-catpro-image">
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                            <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                           <div class="product-cat-images">
+                            <img class='edit_category_image' src="<?php echo base_url(); ?>assets/admin/img/uploads/print1.jpeg"/>
+                            <span class="close-icon2"><a href="#"><i class="glyphicon glyphicon-remove"></i></a></span>
+                           </div>
+                        </div>
+                        <span class="upload_limit">(Maximum Upload size 1MB and Max Upload dimensions 450px * 600px)</span>
+                    </div>
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Description<span class="fill_symbol"> *</span></label>
+                        <textarea type="email" class="form-control" id="description" placeholder="Enter description"></textarea>
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Price<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control price" id="" placeholder="Enter price ">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Total Iteams<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="totaliteam" placeholder="Enter total iteams">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Sold<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="sold" placeholder="Enter Sold">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Size<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="size" placeholder="Enter Size">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Wight<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="wight" placeholder="Enter Wight">
+                    </div> 
+                     <div class="form-group">
+                        <label for="exampleInputEmail1">Colorname<span class="fill_symbol"> *</span></label>
+                        <input type="email" class="form-control" id="color_name" placeholder="Enter Color Name">
+                    </div> 
+                     <div class="control-group">
+                        <label class="control-label" for="selectError">Status<span class="fill_symbol"> *</span></label>
+                        <div class="controls">
+                            <select name="city_id" id="sel_c" class="product-type-filter form-control city_act">
+                                 <option selected hidden>Select</option>
+                                <option>Active</option>
+                                <option>Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="group">    
+                    <button type="submit" class="btn submit-btn btn-default">Submit</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div><!--/row-->
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+</div>
+<?php include "templates/footer.php" ?>
