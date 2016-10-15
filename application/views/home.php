@@ -151,21 +151,23 @@ include "templates/header.php";
 				<div class="row">
 					<div class="col-sm-9">
 						<!-- Products list -->
+					  
 						<ul class="product-list isotope">
+						  <?php foreach ($giftstore_product as $pro): ?>	
 							<li class="standard" data-price="58">
 								<a href="product.php" title="Lisette Dress">
 								<div class="image">
-									<img class="primary" src="<?php echo base_url(); ?>img/thumbnails/db_file_img_48_640xauto.jpg" alt="Lisette Dress" />
-									<img class="secondary" src="<?php echo base_url(); ?>img/thumbnails/db_file_img_49_640xauto.jpg" alt="Lisette Dress" />
+									<img class="primary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Lisette Dress" />
+									<img class="secondary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Lisette Dress" />
 								</div>
 								<div class="title">
 									<div class="prices">
-										<span class="price">£58.00</span>
+										<span class="price"><?php echo $pro['product_price'] ?></span>
 									</div>
-									<h3>Lisette Dress</h3>
+									<h3><?php echo $pro['product_title'] ?></h3>
 								</div> </a>
 							</li>
-							<li class="standard" data-price="55">
+							<!-- <li class="standard" data-price="55">
 								<a href="product.php" title="El Silencio">
 								<div class="image">
 									<img class="primary" src="<?php echo base_url(); ?>img/thumbnails/db_file_img_32_640xauto.jpg" alt="El Silencio" />
@@ -361,8 +363,10 @@ include "templates/header.php";
 									</div>
 									<h3>Navy Linen Blazer</h3>
 								</div> </a>
-							</li>
+							</li> -->
+						 <?php endforeach ?>
 						</ul>
+						
 						<!-- End class="product-list isotope" -->
 					</div>
 

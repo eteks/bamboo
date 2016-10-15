@@ -18,8 +18,22 @@ class Home extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
+	public function  __construct()
 	{
-		$this->load->view('home');
+		parent::__construct();
+        $this->load->model('index_model');
 	}
+	
+	// Index page
+    public function index()
+	{
+	  $categories_values_reg = $this->index_model->get_register();
+      // $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+      // $categories['order_details'] = $categories_values_reg['order_details'];
+      // $categories['order_count'] = $categories_values_reg['order_count'];
+      $categories['giftstore_product'] = $this->index_model->get_latestproduct();
+      // $categories['recipient_list'] = $this->index_model->get_recipient_list();
+      // $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
+	  $this->load->view('home',$categories);
+	}	
 }
