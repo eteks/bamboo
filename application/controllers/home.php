@@ -28,7 +28,7 @@ class Home extends CI_Controller {
     public function index()
 	{
 	  $categories_values_reg = $this->index_model->get_register();
-      // $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+      $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
       // $categories['order_details'] = $categories_values_reg['order_details'];
       // $categories['order_count'] = $categories_values_reg['order_count'];
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();

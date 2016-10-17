@@ -369,59 +369,19 @@ include "templates/header.php";
 						
 						<!-- End class="product-list isotope" -->
 					</div>
-
+					
 					<div class="col-sm-3">
 						<!-- Categories widget -->
 						<div class="widget Categories">
 							<h3 class="widget-title widget-title ">Categories</h3>
 							<ul>
+								<?php foreach ($giftstore_category as $categories) { ?>
 								<li>
-									<a href='category.php' class="title">Mens</a>
-
-									<ul>
-										<li>
-											<a href='category.php' class="title">T-Shirts</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Jackets</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Jumpers</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Shoes</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Shirts</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Accessories</a>
-										</li>
-									</ul>
+									<a href='category.php' class="title"><?php echo $categories['category_name']; ?></a>
 								</li>
-								<li>
-									<a href='category.php' class="title">Womens</a>
-									<ul>
-										<li>
-											<a href='category.php' class="title">Shoes</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Dresses</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Bags</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Trousers</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Tops</a>
-										</li>
-										<li>
-											<a href='category.php' class="title">Accessories</a>
-										</li>
-									</ul>
-								</li>
+								<?php } ?>
+								
+								
 							</ul>
 						</div>
 						<!-- End class="widget Categories" -->
