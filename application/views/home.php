@@ -369,12 +369,11 @@ include "templates/header.php";
 						
 						<!-- End class="product-list isotope" -->
 					</div>
-
+					
 					<div class="col-sm-3">
 						<!-- Categories widget -->
 						<div class="widget Categories">
 							<h3 class="widget-title widget-title ">Categories</h3>
-							
 							<ul>
 								<?php 
                                     if(!empty($giftstore_category)):    

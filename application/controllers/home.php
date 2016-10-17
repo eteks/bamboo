@@ -35,8 +35,8 @@ class Home extends CI_Controller {
 	{
 	  $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-      $categories['order_details'] = $categories_values_reg['order_details'];
-      $categories['order_count'] = $categories_values_reg['order_count'];
+      // $categories['order_details'] = $categories_values_reg['order_details'];
+      // $categories['order_count'] = $categories_values_reg['order_count'];
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
       $categories['recipient_list'] = $this->index_model->get_recipient_list();
       $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
