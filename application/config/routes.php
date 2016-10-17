@@ -52,6 +52,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] 								= 'home';
 $route['404_override'] 										= '';
 $route['translate_uri_dashes'] 								= FALSE;
+//end user
+$route['register'] = 'home/register';
+$route['detail/(:any)'] = 'home/detail/$1';
+$route['category/(:any)'] = 'home/category/$1';
+$route['404_page'] = 'home/nopage';
+
+
+
+$route['order_status/(:any)'] = 'home/order_status/$1';
+$route['contact'] = 'index/contact';
+$route['basket'] = 'index/basket';
+$route['checkout'] = 'index/checkout';
+$route['payumoney'] = 'index/payumoney';
+$route['pay_success_0012KAMAKSHI_292'] = 'index/pay_success';
+$route['success'] = 'index/success';
+$route['pay_failure'] = 'index/pay_failure';
+$route['pay_cancel'] = 'index/pay_cancel';
+// $route['checkout_order_review'] = 'index/checkout_order_review';
+$route['checkout1'] = 'index/checkout1';
+$route['checkout2'] = 'index/checkout2';
+$route['checkout3'] = 'index/checkout3';
+$route['checkout4'] = 'index/checkout4';
+$route['profile'] = 'index/profile';
+$route['customer_wishlist'] = 'index/customer_wishlist';
+$route['my_orders'] = 'index/my_orders';
+$route['recipient_category/(:any)'] = 'home/recipient_category/$1';
+$route['search_section'] = 'index/search_section';
+$route['track_order'] = 'index/track_order';
+$route['404_page'] = 'index/nopage';
+$route['about'] = 'index/about';
+$route['oauth_login/facebook'] = 'oauth_login/facebook_login';
+
+
+
+//admin
 $route['admin'] 											= 'admin/adminhome/index';
 $route['admin/dashboard'] 									= 'admin/admindashboard/dashboard';
 $route['admin/logout'] 										= 'admin/adminhome/logout';

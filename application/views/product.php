@@ -3,10 +3,10 @@
             	
                 <ul class="breadcrumb pull-right">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="<?php echo base_url(); ?>home.php/">Home</a>
                     </li>
                     <li class="active">
-                        <a href="#">Product</a>
+                        <a href="<?php echo base_url(); ?>home.php/category/<?php echo $product_details->category_id; ?>"><?php echo $product_details->category_name;  ?></a>
                     </li>
                 </ul>
                 
@@ -35,17 +35,25 @@
                     <div class="product-images">
                         <div class="box">
                             <div class="primary">
-                                <img src="img/thumbnails/db_file_img_228_480xauto.jpg" data-zoom-image="img/thumbnails/db_file_img_228_640xauto.jpg" alt="Chaser Overalls" />
+                                <img src="<?php echo base_url(); ?><?php echo $product_default_image; ?>" data-zoom-image="img/thumbnails/db_file_img_228_640xauto.jpg" alt="Chaser Overalls" />
                             </div>
 
                             <div class="thumbs" id="gallery">
                                 <ul class="thumbs-list">
+                                	<?php 
+                                        if(!empty($product_image_details)):
+                                        foreach($product_image_details as $pro_det): 
+                                    ?>
                                     <li>
                                         <a class="active" href="#" data-image="img/thumbnails/db_file_img_228_480xauto.jpg" title="Chaser Overalls" data-zoom-image="img/thumbnails/db_file_img_228_640xauto.jpg">
-                                            <img src="img/thumbnails/db_file_img_228_160xauto.jpg" alt="Chaser Overalls" />
+                                            <img src="<?php echo base_url(); ?><?php echo $pro_det['product_upload_image']; ?>" alt="Chaser Overalls" />
                                         </a>
                                     </li>
-                                    <li>
+                                    <?php 
+                                        endforeach;
+                                        endif;
+                                    ?>
+                                    <!-- <li>
                                         <a  href="#" data-image="img/thumbnails/db_file_img_229_480xauto.jpg" title="Chaser Overalls" data-zoom-image="img/thumbnails/db_file_img_229_640xauto.jpg">
                                             <img src="img/thumbnails/db_file_img_229_160xauto.jpg" alt="Chaser Overalls" />
                                         </a>
@@ -54,7 +62,7 @@
                                         <a  href="#" data-image="img/thumbnails/db_file_img_227_480xauto.jpg" title="Chaser Overalls" data-zoom-image="img/thumbnails/db_file_img_227_640xauto.jpg">
                                             <img src="img/thumbnails/db_file_img_227_160xauto.jpg" alt="Chaser Overalls" />
                                         </a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
 
@@ -123,8 +131,8 @@
                                     <form enctype="multipart/form-data" action="#" onsubmit="return false;" method="post">
                                         
                                         <div class="details">
-                                            <h1>Chaser Overalls</h1>
-                                            <div class="prices"><span class="price">£92.00</span></div>
+                                            <h1><?php echo $product_details->product_title;  ?></h1>
+                                            <div class="prices"><span class="price">Rs <?php echo $product_details->product_price;  ?></span></div>
 
                                             <div class="meta">
                                                 <div class="sku">
@@ -139,7 +147,7 @@
                                         </div>
 
                                         <div class="short-description">
-                                            <p>Vintage-style faux leather short overalls. Long adjustable straps with brass detailing, exposed zip at back, and side slant pockets with single rear welt pocket.</p>
+                                            <p><?php echo $product_details->product_description;  ?></p>
                                         </div>
                                         
                                         <div class="options">
@@ -384,24 +392,25 @@
                 <h5>Can't find what you're looking for? Why not try these&hellip;</h5>
 
                 <ul class="product-list isotope">
+                	<?php foreach($recommanded_products as $rec_pro): ?>
                     <li class="standard" data-price="160">
-                        <a href="product.php" title="1300 in Grey">
+                        <a href="<?php echo base_url(); ?>detail/<?php echo $rec_pro['product_id']; ?>" title="1300 in Grey">
 
                             <div class="image">
-                                <img class="primary" src="img/thumbnails/db_file_img_48_640xauto.jpg" alt="Lisette Dress" />
-                                <img class="secondary" src="img/thumbnails/db_file_img_49_640xauto.jpg" alt="Lisette Dress" />
+                                <img class="primary" src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="Lisette Dress" />
+                                <img class="secondary" src="<?php echo base_url().$rec_pro['product_upload_image']; ?>" alt="Lisette Dress" />
 
                             </div>
 
                             <div class="title">
-                                <div class="prices"><span class="price">£160.00</span></div>
-                                <h3>1300 in Grey</h3>
+                                <div class="prices"><span class="price">Rs <?php echo $rec_pro['product_price'] ?></span></div>
+                                <h3><?php echo $rec_pro['product_title'] ?></h3>
 
                             </div>
 
                         </a>
                     </li>
-                    <li class="standard" data-price="75">
+                    <!-- <li class="standard" data-price="75">
                         <a href="product.php" title="574 In Navy">
 
                             <div class="image">
@@ -434,7 +443,8 @@
                             </div>
 
                         </a>
-                    </li>
+                    </li> -->
+                    <?php endforeach; ?>
                 </ul>
             </div>
         </div>	

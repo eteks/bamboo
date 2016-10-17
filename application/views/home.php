@@ -150,15 +150,15 @@ include "templates/header.php";
 
 				<div class="row">
 					<div class="col-sm-9">
-						<!-- Products list -->
+						<!-- Products listO(Latest Products) -->
 					  
 						<ul class="product-list isotope">
 						  <?php foreach ($giftstore_product as $pro): ?>	
 							<li class="standard" data-price="58">
-								<a href="product.php" title="Lisette Dress">
+								<a href="<?php echo base_url(); ?>detail/<?php echo $pro['product_id']; ?>" title="<?php echo $pro['product_title'] ?>">
 								<div class="image">
-									<img class="primary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Lisette Dress" />
-									<img class="secondary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Lisette Dress" />
+									<img class="primary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Latest Products" />
+									<img class="secondary" src="<?php echo base_url().$pro['product_upload_image'] ?>" alt="Latest Products " />
 								</div>
 								<div class="title">
 									<div class="prices">
@@ -374,11 +374,15 @@ include "templates/header.php";
 						<!-- Categories widget -->
 						<div class="widget Categories">
 							<h3 class="widget-title widget-title ">Categories</h3>
+							
 							<ul>
+								<?php 
+                                    if(!empty($giftstore_category)):    
+                                    foreach ($giftstore_category as $cat):?>
 								<li>
-									<a href='category.php' class="title">Mens</a>
+									<a href='<?php echo base_url(); ?>category/<?php echo $cat['category_id']; ?>' class="title"><?php echo $cat['category_name']; ?></a>
 
-									<ul>
+									<!-- <ul>
 										<li>
 											<a href='category.php' class="title">T-Shirts</a>
 										</li>
@@ -397,9 +401,9 @@ include "templates/header.php";
 										<li>
 											<a href='category.php' class="title">Accessories</a>
 										</li>
-									</ul>
+									</ul> -->
 								</li>
-								<li>
+								<!-- <li>
 									<a href='category.php' class="title">Womens</a>
 									<ul>
 										<li>
@@ -421,8 +425,13 @@ include "templates/header.php";
 											<a href='category.php' class="title">Accessories</a>
 										</li>
 									</ul>
-								</li>
+								</li> -->
+							   <?php 
+                               endforeach;
+                               endif;
+                              ?>
 							</ul>
+							
 						</div>
 						<!-- End class="widget Categories" -->
 

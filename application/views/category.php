@@ -3,10 +3,10 @@
             	
                 <ul class="breadcrumb pull-right">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="<?php echo base_url(); ?>">Home</a>
                     </li>
                     <li class="active">
-                        <a href="#">Category</a>
+                        <a href="#"><?php echo $cat_name->category_name; ?></a>
                     </li>
                 </ul>
                 
