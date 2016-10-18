@@ -351,9 +351,7 @@ public function get_product_list($limit)
         // echo "<pre>";
         // print_r($query);
         // echo "</pre>";
-
-
-        return $query;
+       return $query;
 
 
     }

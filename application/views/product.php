@@ -132,7 +132,7 @@
                                         
                                         <div class="details">
                                             <h1><?php echo $product_details->product_title;  ?></h1>
-                                            <div class="prices"><span class="price">Rs <?php echo $product_details->product_price;  ?></span></div>
+                                            <div class="prices"><span class="price">£ <?php echo $product_details->product_price; ?></span></div>
 
                                             <div class="meta">
                                                 <div class="sku">
@@ -403,7 +403,7 @@
                             </div>
 
                             <div class="title">
-                                <div class="prices"><span class="price">Rs <?php echo $rec_pro['product_price'] ?></span></div>
+                                <div class="prices"><span class="price">£ <?php echo $rec_pro['product_price'] ?></span></div>
                                 <h3><?php echo $rec_pro['product_title'] ?></h3>
 
                             </div>

@@ -313,25 +313,28 @@
 		</div>
 		
 		<!-- BEGIN JAVASCRIPTS -->
+<script type="text/javascript">
+        var baseurl = "<?php echo base_url(); ?>";
+</script>		
 
-<script src="./js/jquery-1.11.3.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery-1.11.3.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/bootstrap.min.js"></script>
 
 <!--[if lt IE 9]>
 <script src="js/html5shiv.js"></script>
 <![endif]-->
 
-<script src="./js/jquery-migrate-1.2.1.min.js"></script>
-<script src="./js/isotope.pkgd.min.js"></script>
-<script src="./js/imagesloaded.pkgd.min.js"></script>
-<script src="./js/jquery.flexslider.js"></script>
-<script src="./js/jquery-ui-1.10.2.custom.js"></script>
-<script src="./js/jquery.easing.min.js"></script>
-<script src="./js/jquery.elevatezoom.js"></script>
-<script src="./js/jquery.sharrre-1.3.5.js"></script>
-<script src="./js/jquery.cookie.js"></script>
-<script src="./js/la_boutique.js"></script>
-<script src="./js/tfingi-megamenu/tfingi-megamenu-frontend.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery-migrate-1.2.1.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/isotope.pkgd.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/imagesloaded.pkgd.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery.flexslider.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery-ui-1.10.2.custom.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery.easing.min.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery.elevatezoom.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery.sharrre-1.3.5.js"></script>
+<script src="<?php echo base_url(); ?>./js/jquery.cookie.js"></script>
+<script src="<?php echo base_url(); ?>./js/la_boutique.js"></script>
+<script src="<?php echo base_url(); ?>./js/tfingi-megamenu/tfingi-megamenu-frontend.js"></script>
 
 
 

@@ -62,17 +62,16 @@ class Home extends CI_Controller {
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
         // $categories['order_details'] = $categories_values_reg['order_details'];
         // $categories['order_count'] = $categories_values_reg['order_count'];
-		// $categories['gift_recipient'] = $this->index_model->get_recipient();
+		$categories['gift_recipient'] = $this->index_model->get_recipient();
     	$category_values = $this->index_model->get_category();
 		$categories['cat_name'] = $category_values['cat_name'];
-		// $categories['gift_subcategory'] = $category_values['gift_subcategory'];
+		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
 		$categories['product_category'] = $category_values['product_category'];
         $categories['product_price'] = $category_values['product_price'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
 	
-	    
-			 $this->load->view('category',$categories);
+	    $this->load->view('category',$categories);
 		
 	// echo "<pre>";
 		// print_r($categories);
@@ -98,6 +97,25 @@ class Home extends CI_Controller {
 		
 		$this->load->view('product', $categories);
 	}
+	
+	public function recipient_category()
+    {
+        $categories_values_reg = $this->index_model->get_register();
+        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        $categories_val_details = $this->index_model->get_recipients_category();
+        $categories['recipients_category_list'] = $categories_val_details['recipients_category_list'];
+        $categories['recipient_name'] = $categories_val_details['recipient_name'];
+        if($categories['recipients_category_list']!=null && $categories['recipient_name']!=null)
+        {
+            $this->load->view('recipient_category',$categories);
+        }
+        else {
+            $this->load->view('no_products',$categories);
+        }
+    }
 
 	public function nopage()
 	    {

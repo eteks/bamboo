@@ -15,7 +15,10 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>/css/flexslider.css" />
 <link rel="stylesheet" href="<?php echo base_url(); ?>/js/tfingi-megamenu/tfingi-megamenu-frontend.css" />
 
+<!--CSS-->
 <link rel="stylesheet" href="<?php echo base_url(); ?>/css/color-schemes/turquoise.css" id="color_scheme" />
+<!-- Custom CSS -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>/css/custom.css" />
 
 <!-- <meta http-equiv="X-UA-Compatible" content="IE=7; IE=8" />-->
 <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -151,7 +154,7 @@
         <ul id="menu-main-navigation" class="main-menu">
         
             <li class="menu-item-home menu-item-has-children megamenu-parent " data-width="">
-            	<a href="index.php">Home</a>
+            	<a href="<?php echo base_url(); ?>home.php/">Home</a>
                 <ul class="sub-menu">
                     <li class="megamenu-heading"><a href="#MegaMenuHeading"><h3>Responsive Full Width Megamenu</h3></a></li>
                     <li class="menu-item-has-children megamenu-column">

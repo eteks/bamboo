@@ -1,0 +1,14 @@
+/* Bamboo - custom css code */
+/* Category Menu Page */
+.category_menu {
+	list-style-type: none;
+}
+.subcategory_menu {
+	list-style-type: none;
+	margin: 10px;
+	cursor: pointer;
+}
+.recipients_list {
+	list-style-type: none;
+	cursor: pointer;
+}
