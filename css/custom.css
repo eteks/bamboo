@@ -12,3 +12,18 @@
 	list-style-type: none;
 	cursor: pointer;
 }
+/* filtering */
+.filtering_titles {
+    display: inline-block !important;
+}
+.filtering_title {
+    background-color: #537fc0;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    padding: 10px;
+}
+.recipients_filter a i.fa, .sub_categories_filter i.fa {
+    margin: 0 5px;
+    color: #000;
+    cursor: pointer;
+}

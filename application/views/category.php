@@ -1,3 +1,4 @@
+<?php if(!$this->input->is_ajax_request()){ ?>
 <?php include "templates/header.php"; ?>
             <div class="col-md-3 visible-lg">
             	
@@ -110,7 +111,7 @@
                                 </li> -->
                                 <?php foreach ($gift_recipient as $recipient): ?>	
 	                             	<li class="recipients_list">	
-	                             	   <a class="list-group-item" data-id="<?php echo $recipient['recipient_id']; ?>"><?php echo $recipient['recipient_type']; ?></a> 
+	                             	   <a class="list-group-item recipients" data-id="<?php echo $recipient['recipient_id']; ?>"><?php echo $recipient['recipient_type']; ?></a> 
 			                        </li>
 		                         <?php endforeach; ?>   
                               </ul>  
@@ -450,14 +451,60 @@
 
             
             <div class="col-sm-9">
-
-                <!-- Products list -->
+             <!--Filtering & Sort by section-->
+              <div> 
+                 <div class="filtering_title">
+                  	<span class="filtering_titles filtering_name">Filtering  |</span>
+                    <div class="filtering_sections filtering_titles"></div>
+                  </div>
+                    <!-- <div class="box product_name">
+                        <h1><?php 
+                        // echo $cat_name->category_name; 
+                        ?>
+                        <!--</h1>
+                    </div> -->
+                    <div class="box info-bar">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 products-showing">
+                            	<strong class="category_name">Products for <?php echo $cat_name->category_name; ?></strong>
+                                <!-- Showing <strong>12</strong> of <strong><?php echo $cat_pro_count; ?></strong> products -->
+                            </div>
+                            <div class="col-sm-12 col-md-6  products-number-sort">
+                                <div class="row">
+                                    <form class="form-inline">
+                                        <div class="col-md-6 col-sm-6">
+                                            <!-- <div class="products-number">
+                                                <strong>Show</strong>  <a href="#" class="btn btn-default btn-sm btn-primary">12</a>  <a href="#" class="btn btn-default btn-sm">24</a>  <a href="#" class="btn btn-default btn-sm">All</a> products
+                                            </div> -->
+                                        </div>
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="products-sort-by product_sorting">
+                                                <strong>Sort by</strong>
+                                                <select class="sort_products" id="sort_products" name="sort-by" class="form-control">
+                                                    <option value="pricel">Price - Low to High</option>
+                                                    <option value="priceh">Price - High to Low</option>
+                                                    <option value="name">Name </option>
+                                                    <option value="newest">Newest first</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
+               </div>
+                <!--end of filtering--> 	
+           
+            <!-- Products list -->
+            <div id="product-list">	
 				<ul class="product-list isotope">
 					<?php 
 					      if(!empty($product_category)): foreach($product_category as $cat_pro):
 				    ?> 
-				    <li class="standard" data-price="58">
-				        <a href="<?php echo base_url(); ?>detail/<?php echo $cat_pro['product_id'] ?>" title="Lisette Dress">
+				    <li class="standard" data-price="£ <?php echo $cat_pro['product_price']; ?>">
+				        <a href="<?php echo base_url(); ?>detail/<?php echo $cat_pro['product_id'] ?>" title="">
 				            <div class="image">
 				                <img class="primary" src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="products by category" />
 				                <img class="secondary" src="<?php echo base_url().$cat_pro['product_upload_image'] ?>" alt="products by category" />
@@ -467,7 +514,7 @@
 				                <div class="prices">
 				                    <span class="price">£ <?php echo $cat_pro['product_price']; ?></span>
 				                </div>
-				                <h3>Lisette Dress</h3>
+				                <h3><?php echo $cat_pro['product_title']; ?></h3>
 				            </div>
 				
 				        </a>
@@ -723,28 +770,37 @@
 				    </li> -->
 					  <?php endforeach; else: ?>
 					    <p class="not_available">Product(s) not available.</p>
-					  <?php endif; ?>  
+					  <?php endif; ?> 
+					  <div class="cb"> </div>
+                      			   
 					</ul>
-					<!-- End class="product-list isotope" -->
-                
+					<div class="bottom_pagination">
+                           <?php echo $this->ajax_pagination->create_links(); ?> 
+                       </div> 
+				</div> <!--#product-list-->	
+				<!-- End class="product-list isotope" -->
+<?php if(!$this->input->is_ajax_request()){ ?>
+				                
                 <!-- "Load More" Button -->
 
-                <button id="load_more" class="btn btn-block" data-category="16" data-rows="20" data-page="1" data-featured="true">
+                <!-- <button id="load_more" class="btn btn-block" data-category="16" data-rows="20" data-page="1" data-featured="true">
                     <span>Load more</span> &nbsp; <i class="fa fa-spinner fa-spin fa-lg"></i>
-                </button>
+                </button> -->
                 
                 <!-- End "Load More" Button -->
 
             </div>
-            
-
-        </div>
+            <!--col-sm-9-->
+        </div> 
+        <!--row-->
     </div>
+    <!--container-->
 
 </section>
 <!-- End class="category" -->
 			
-			</section>
-			<!-- End class="main" -->
+</section>
+<!-- End class="main" -->
 			
 <?php include "templates/footer.php"; ?>
+<?php } ?>

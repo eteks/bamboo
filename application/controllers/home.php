@@ -26,8 +26,9 @@ class Home extends CI_Controller {
         $this->load->library('session');
         $this->load->library(array('form_validation','session'));
         $this->load->helper(array('url','html','form'));
-		
-		
+		// Load pagination library
+        $this->load->library('ajax_pagination');
+        $this->perPage = 5;
 	}
 	
 	// Index page
@@ -60,10 +61,10 @@ class Home extends CI_Controller {
 	{
 		$categories_values_reg = $this->index_model->get_register();
         $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-        // $categories['order_details'] = $categories_values_reg['order_details'];
-        // $categories['order_count'] = $categories_values_reg['order_count'];
+        $categories['order_details'] = $categories_values_reg['order_details'];
+        $categories['order_count'] = $categories_values_reg['order_count'];
 		$categories['gift_recipient'] = $this->index_model->get_recipient();
-    	$category_values = $this->index_model->get_category();
+    	$category_values = $this->index_model->get_category($this->perPage);
 		$categories['cat_name'] = $category_values['cat_name'];
 		$categories['gift_subcategory'] = $category_values['gift_subcategory'];
 		$categories['cat_pro_count'] = $category_values['cat_pro_count'];
@@ -71,11 +72,23 @@ class Home extends CI_Controller {
         $categories['product_price'] = $category_values['product_price'];
         $categories['recipient_list'] = $this->index_model->get_recipient_list();
 	
-	    $this->load->view('category',$categories);
+	    // print_r($categories);
+		if($categories['cat_name']!=null && $categories['gift_subcategory']!=null && $categories['cat_pro_count']!=null && $categories['product_category']!=null) {
+    	    //pagination configuration
+            $config['target']      = '#product-list';
+            $config['base_url']    = base_url().'home.php/ajax_controller/filtering_product';
+            $config['total_rows']  = $categories['cat_pro_count'];
+            $config['per_page']    = $this->perPage;
+            $this->ajax_pagination->initialize($config);
+            $this->load->view('category',$categories);
+		}
+		else {
+			$this->load->view('no_products',$categories);
+		}
 		
-	// echo "<pre>";
-		// print_r($categories);
-		// echo "</pre>";
+		// echo "<pre>";
+			// print_r($categories);
+			// echo "</pre>";
 	}
 
 
@@ -98,25 +111,7 @@ class Home extends CI_Controller {
 		$this->load->view('product', $categories);
 	}
 	
-	public function recipient_category()
-    {
-        $categories_values_reg = $this->index_model->get_register();
-        $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-        $categories['order_details'] = $categories_values_reg['order_details'];
-        $categories['order_count'] = $categories_values_reg['order_count'];
-        $categories['recipient_list'] = $this->index_model->get_recipient_list();
-        $categories_val_details = $this->index_model->get_recipients_category();
-        $categories['recipients_category_list'] = $categories_val_details['recipients_category_list'];
-        $categories['recipient_name'] = $categories_val_details['recipient_name'];
-        if($categories['recipients_category_list']!=null && $categories['recipient_name']!=null)
-        {
-            $this->load->view('recipient_category',$categories);
-        }
-        else {
-            $this->load->view('no_products',$categories);
-        }
-    }
-
+	
 	public function nopage()
 	    {
 	        $categories_values_reg = $this->index_model->get_register();

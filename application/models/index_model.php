@@ -1,5 +1,3 @@
-
-<!-- kalai idea -->
 <?php
 
 class Index_Model extends CI_Model {
@@ -121,7 +119,7 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
-   public function get_category()
+    public function get_category($limit)
     {
 
         if ($this->uri->segment(2)) {
@@ -143,7 +141,7 @@ class Index_Model extends CI_Model {
             $cat_product=$this->db->join('giftstore_product_upload_image cpi','cp.product_id=cpi.product_mapping_id','inner');
             $where = '(cp.product_category_id="'.$this->uri->segment(2).'" and cp.product_status=1 and cp.product_totalitems!=0)';
             $cat_product=$this->db->where($where);
-            // $cat_product=$this->db->limit($limit, '0');
+            $cat_product=$this->db->limit($limit, '0');
             $cat_product=$this->db->order_by('product_price', 'asc');
             $cat_product=$this->db->group_by('cp.product_id');
             $cat_product=$this->db->order_by('product_price', 'asc');
@@ -176,7 +174,7 @@ class Index_Model extends CI_Model {
         return $query;
     }
 
-public function get_product_list($limit)
+    public function get_product_list($limit)
     {
 
         if ($this->input->post('search_keyword')) {
@@ -344,16 +342,9 @@ public function get_product_list($limit)
         $this->db->select('*');
         $this->db->from('giftstore_category c');
         $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'left');
-        // $this->db->join('giftstore_category c', 'rc.category_mapping_id=c.category_id', 'left');
-        
+
         $query = $this->db->where($where)->get()->result_array();
-
-        // echo "<pre>";
-        // print_r($query);
-        // echo "</pre>";
-       return $query;
-
-
+        return $query;
     }
 
     // Get Category based on recipient
@@ -371,29 +362,78 @@ public function get_product_list($limit)
 
     // Get user profile details
     public function get_user_profile_details()
-    {   
-        // $current_user_session = $this->session->userdata("login_session");
-        // $profile_where = '(user_id="'.$current_user_session['user_id'].'")';
-        // $profile_query = $this->db->select('*');
-        // $profile_query = $this->db->from('giftstore_users gu');
-        // $profile_query = $this->db->join('giftstore_state',);  
+    {       
+        $profile['profile_get_area'] = array();
+        $profile['profile_get_city'] = array();
+        $current_user_session = $this->session->userdata("login_session");
+        $profile_where = '(gu.user_id="'.$current_user_session['user_id'].'")';
+        $profile_query = $this->db->select('*');
+        $profile_query = $this->db->from('giftstore_users gu');
+        $profile_query = $this->db->join('giftstore_state gs','gu.user_state_id=gs.state_id','left'); 
+        $profile_query = $this->db->join('giftstore_city gc','gu.user_city_id=gc.city_id','left');
+        $profile_query = $this->db->join('giftstore_area ga','gu.user_area_id=ga.area_id','left'); 
 
-        // $profile_query = $this->db->get_where('giftstore_users',$profile_where)->row_array();
+        $profile['user_profile_details'] = $this->db->where($profile_where)->get()->row_array();
 
-        // print_r($profile_query);
+        $profile_state_where = '(state_status=1)';
+        $profile['profile_get_state'] = $this->db->get_where('giftstore_state',$profile_state_where)->result_array();
 
+        if(!empty($profile['user_profile_details']['user_state_id']) && !empty($profile['user_profile_details']['user_city_id'])) {
+            $profile_area_where = '(area_state_id="'.$profile['user_profile_details']['user_state_id'].'" and area_city_id="'.$profile['user_profile_details']['user_city_id'].'" and area_status=1)';
+            $profile['profile_get_area'] = $this->db->get_where('giftstore_area',$profile_area_where)->result_array();
+        }
+        if(!empty($profile['user_profile_details']['user_state_id'])) {
+            $profile_city_where = '(city_state_id="'.$profile['user_profile_details']['user_state_id'].'" and city_status=1)';
+            $profile['profile_get_city'] = $this->db->get_where('giftstore_city',$profile_city_where)->result_array();  
+        }
+        return $profile;
+    }
 
+    // Get my orders list
+    public function get_my_orders()
+    {
+        $current_user_session = $this->session->userdata("login_session");
+        $myorder_where = '(order_user_id="'.$current_user_session['user_id'].'")';
+        $query = $this->db->get_where('giftstore_order',$myorder_where)->result_array();
+        return $query;
+    }
 
+    // Get my orders status
+    public function get_order_status()
+    {
+        $order_status_array = array();
+        if($this->uri->segment(2)) {
+            // Get product details
+            $order_status_where = '(go.orderitem_order_id="'.$this->uri->segment(2).'")';
+            $order_status_query = $this->db->select('*');
+            $order_status_query = $this->db->from('giftstore_orderitem go');
+            $order_status_query = $this->db->join('giftstore_product gp','go.orderitem_product_id=gp.product_id','inner');
+            $order_status_query = $this->db->join('giftstore_product_upload_image gpui','gp.product_id=gpui.product_mapping_id','inner');
+            $order_status_query = $this->db->where($order_status_where)->group_by('product_id');
+            $order_status_array['order_status'] = $order_status_query->get()->result_array();
 
+            // Get address
+            $order_status_address_where = '(go.order_id="'.$this->uri->segment(2).'")';
+            $order_status_address_query = $this->db->select('*');
+            $order_status_address_query = $this->db->from('giftstore_order go');
+            $order_status_address_query = $this->db->join('giftstore_state gs','go.order_shipping_state_id=gs.state_id','inner');
+            $order_status_address_query = $this->db->join('giftstore_city gc','go.order_shipping_city_id=gc.city_id','inner');
+            $order_status_address_query = $this->db->join('giftstore_area ga','go.order_shipping_area_id=ga.area_id','inner');
+            $order_status_address_query = $this->db->where($order_status_address_where);
+            $order_status_array['order_status_address'] = $order_status_address_query->get()->row_array();
+        }   
+        return $order_status_array;
+    }
 
-
-        // $this->db->select('*');
-        // $this->db->from('giftstore_category c');
-        // $this->db->join('giftstore_recipient_category rc', 'c.category_id=rc.category_mapping_id', 'inner');
-        // $query['recipients_category_list'] = $this->db->where($where)->get()->result_array();
-        // $rec_where = '(recipient_status=1 and recipient_id="'.$this->uri->segment(2).'")';
-        // $query['recipient_name'] = $this->db->get_where('giftstore_recipient',$rec_where)->row_array();
-        // return $query;
+    // Track order details
+    public function get_trackorder_details()
+    {
+        $track_order_status_array = array();
+        if($this->input->post('track_order_id')) {
+            $track_order_where = '(order_id="'.$this->input->post('track_order_id').'")';
+            $track_order_status_array = $this->db->get_where('giftstore_order',$track_order_where)->row_array();
+        }  
+        return $track_order_status_array;
     }
 
 }
