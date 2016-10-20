@@ -36,13 +36,18 @@ class Home extends CI_Controller {
 	{
 	  $categories_values_reg = $this->index_model->get_register();
       $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
-      // $categories['order_details'] = $categories_values_reg['order_details'];
-      // $categories['order_count'] = $categories_values_reg['order_count'];
+      // // $categories['order_details'] = $categories_values_reg['order_details'];
+      // // $categories['order_count'] = $categories_values_reg['order_count'];
       $categories['giftstore_product'] = $this->index_model->get_latestproduct();
       $categories['recipient_list'] = $this->index_model->get_recipient_list();
-      $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
+      // $categories['category_recipient_list'] = $this->index_model->get_category_recipient();
 	   
-	  $this->load->view('home',$categories);
+	 $this->load->view('home', $categories);
+	  // echo "<pre>";
+	     // print_r($categories);
+	  // echo"</pre>";	 
+
+	   
 	}	
 	
 	public function register()
@@ -110,6 +115,40 @@ class Home extends CI_Controller {
 		
 		$this->load->view('product', $categories);
 	}
+	
+	// For Add to Cart
+	public function basket()
+	{
+        
+		$this->load->view('cart');
+	}
+	
+	// For Checkout page
+	public function checkout()
+    {
+    		
+    	$this->load->view('checkout');
+		
+	}
+	
+	//register
+	public function reg_form()
+    {
+        // $categories_values_reg = $this->index_model->get_register();
+        // $categories['giftstore_category'] = $categories_values_reg['giftstore_category'];
+        // $categories['order_details'] = $categories_values_reg['order_details'];
+        // $categories['order_count'] = $categories_values_reg['order_count'];
+        // $categories['giftstore_subcategory'] = $this->index_model->get_category();
+        // $categories['recipient_list'] = $this->index_model->get_recipient_list();
+        // $this->index_model->get_reg_form();
+        $this->load->view('login-register');
+    }
+
+    //Password Reset
+    public function reset_pwd()
+	{
+		$this->load->view('reset-password');
+	}	
 	
 	
 	public function nopage()

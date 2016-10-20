@@ -38,7 +38,7 @@
                 <div class="col-md-12">
                     <ul class="list-inline pull-right">
                         <li>
-                            <a href="login-register.php" title="Login / Register">Login / Register</a>									
+                            <a href="<?php echo base_url(); ?>reg_form/" title="Login / Register">Login / Register</a>									
                         </li>
                     </ul>
                 </div>
@@ -55,7 +55,7 @@
                 	
                 	<!-- Logo -->
                     <div class="logo">
-                        <a href="index.php" title="&larr; Back home">
+                        <a href="<?php echo base_url(); ?>" title="&larr; Back home">
                             <img src="<?php echo base_url(); ?>img/logo.png" alt="Bamboo" />
                         </a>
                     </div>
@@ -127,7 +127,7 @@
                     
                 <!-- Mini cart -->
                 <div class="mini-cart">
-                    <a href="cart.php" title="Go to cart &rarr;">
+                    <a href="<?php echo base_url(); ?>basket/" title="Go to cart &rarr;">
                         <!--<span>3</span>-->
                     </a>									
                 </div>
@@ -154,7 +154,7 @@
         <ul id="menu-main-navigation" class="main-menu">
         
             <li class="menu-item-home menu-item-has-children megamenu-parent " data-width="">
-            	<a href="<?php echo base_url(); ?>home.php/">Home</a>
+            	<a href="<?php echo base_url(); ?>">Home</a>
                 <ul class="sub-menu">
                     <li class="megamenu-heading"><a href="#MegaMenuHeading"><h3>Responsive Full Width Megamenu</h3></a></li>
                     <li class="menu-item-has-children megamenu-column">
@@ -314,7 +314,7 @@
             
             <li ><a href="store-locator.html">Store locator</a></li>
             
-            <li ><a href="cart.php">Cart</a></li>
+            <li ><a href="<?php echo base_url(); ?>basket/">Cart</a></li>
             
             <li class="menu-item-has-children megamenu-parent" data-width="400">
                 <a href="contact-us.php">Contact Us</a>

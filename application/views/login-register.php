@@ -3,7 +3,7 @@
             	
                 <ul class="breadcrumb pull-right">
                     <li>
-                        <a href="#">Home</a>
+                        <a href="<?php echo base_url(); ?>home/">Home</a>
                     </li>
                     <li class="active">
                         <a href="#">Login Register</a>
@@ -66,7 +66,7 @@
                 <button type="submit" class="btn btn-primary btn-sm btn-block-xs" name="login" value="Login">
                     Login
                 </button>
-                <a href="reset-password.php" class="btn btn-sm btn-block-xs">
+                <a href="<?php echo base_url(); ?>reset_pwd/" class="btn btn-sm btn-block-xs">
                     Reset my password
                 </a>
             </div>		           

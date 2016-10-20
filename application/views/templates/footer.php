@@ -325,7 +325,9 @@
 <![endif]-->
 
 <!--Custom JS file links -->
+<script src="<?php echo base_url(); ?>./js/custom.js"></script>
 <script src="<?php echo base_url(); ?>./js/ajax_call.js"></script>
+
 
 <script src="<?php echo base_url(); ?>./js/jquery-migrate-1.2.1.min.js"></script>
 <script src="<?php echo base_url(); ?>./js/isotope.pkgd.min.js"></script>

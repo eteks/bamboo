@@ -56,17 +56,20 @@ $route['translate_uri_dashes'] 								= FALSE;
 $route['register'] = 'home/register';
 $route['detail/(:any)'] = 'home/detail/$1';
 $route['category/(:any)'] = 'home/category/$1';
+$route['recipient_category/(:any)'] = 'home/recipient_category/$1';
+$route['basket'] = 'home/basket';
+$route['checkout'] = 'home/checkout';
 $route['404_page'] = 'home/nopage';
+$route['reg_form'] = 'home/reg_form';
+$route['reset_pwd'] = 'home/reset_pwd';
 
 
 
+$route['success'] = 'home/success';
 $route['order_status/(:any)'] = 'home/order_status/$1';
 $route['contact'] = 'index/contact';
-$route['basket'] = 'index/basket';
-$route['checkout'] = 'index/checkout';
 $route['payumoney'] = 'index/payumoney';
 $route['pay_success_0012KAMAKSHI_292'] = 'index/pay_success';
-$route['success'] = 'index/success';
 $route['pay_failure'] = 'index/pay_failure';
 $route['pay_cancel'] = 'index/pay_cancel';
 // $route['checkout_order_review'] = 'index/checkout_order_review';
@@ -77,10 +80,8 @@ $route['checkout4'] = 'index/checkout4';
 $route['profile'] = 'index/profile';
 $route['customer_wishlist'] = 'index/customer_wishlist';
 $route['my_orders'] = 'index/my_orders';
-$route['recipient_category/(:any)'] = 'home/recipient_category/$1';
 $route['search_section'] = 'index/search_section';
 $route['track_order'] = 'index/track_order';
-$route['404_page'] = 'index/nopage';
 $route['about'] = 'index/about';
 $route['oauth_login/facebook'] = 'oauth_login/facebook_login';
 

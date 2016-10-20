@@ -162,7 +162,7 @@ include "templates/header.php";
 								</div>
 								<div class="title">
 									<div class="prices">
-										<span class="price"><?php echo $pro['product_price'] ?></span>
+										<span class="price">£ <?php echo $pro['product_price'] ?></span>
 									</div>
 									<h3><?php echo $pro['product_title'] ?></h3>
 								</div> </a>

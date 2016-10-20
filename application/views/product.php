@@ -3,10 +3,10 @@
             	
                 <ul class="breadcrumb pull-right">
                     <li>
-                        <a href="<?php echo base_url(); ?>home.php/">Home</a>
+                        <a href="<?php echo base_url(); ?>home/">Home</a>
                     </li>
                     <li class="active">
-                        <a href="<?php echo base_url(); ?>home.php/category/<?php echo $product_details->category_id; ?>"><?php echo $product_details->category_name;  ?></a>
+                        <a href="<?php echo base_url(); ?>category/<?php echo $product_details->category_id; ?>"><?php echo $product_details->category_name;  ?></a>
                     </li>
                 </ul>
                 
@@ -463,7 +463,7 @@
 		            </div>
 		        </div>
 		        <div class="modal-footer">	
-	                <a href="cart.php" class="btn btn-primary btn-sm btn-block-xs">
+	                <a href="<?php echo base_url(); ?>basket/" class="btn btn-primary btn-sm btn-block-xs">
 	                    Go to cart &nbsp; <i class="fa fa-chevron-right"></i>
 	                </a>
 		        </div>
